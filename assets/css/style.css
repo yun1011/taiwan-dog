@@ -1,0 +1,220 @@
+/* =========================================================
+   台灣犬圖鑑 — 全站唯一樣式檔
+   規則：顏色一律用 :root 變數；新增顏色時 dark mode 也要定義
+   ========================================================= */
+
+:root {
+  --paper: #f6f0e4;
+  --paper-2: #efe6d3;
+  --card: #fffaf0;
+  --ink: #2b2118;
+  --muted: #6d5f50;
+  --earth: #b9802f;
+  --earth-soft: #ead2a8;
+  --forest: #3f6b4a;
+  --forest-soft: #dbe7d6;
+  --line: #ddcfb6;
+  --shadow: 0 1px 2px rgba(60, 40, 15, .06), 0 6px 20px rgba(60, 40, 15, .07);
+  --radius: 14px;
+  --maxw: 760px;
+  --serif: "Noto Serif TC", "Songti TC", serif;
+  --sans: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #1b1712;
+    --paper-2: #231e17;
+    --card: #2a241c;
+    --ink: #efe6d6;
+    --muted: #b3a48f;
+    --earth: #dba659;
+    --earth-soft: #4a3a22;
+    --forest: #8fbf97;
+    --forest-soft: #263a2b;
+    --line: #3d3428;
+    --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 6px 20px rgba(0, 0, 0, .25);
+    color-scheme: dark;
+  }
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 17px;
+  line-height: 1.85;
+}
+
+img, svg { max-width: 100%; height: auto; }
+
+a { color: var(--forest); text-underline-offset: 3px; }
+a:hover { color: var(--earth); }
+
+h1, h2, h3 { font-family: var(--serif); line-height: 1.35; font-weight: 700; }
+h2 {
+  font-size: 1.45rem;
+  margin: 2.6rem 0 .8rem;
+  padding-bottom: .4rem;
+  border-bottom: 2px solid var(--earth-soft);
+}
+h3 { font-size: 1.15rem; margin: 1.8rem 0 .5rem; }
+p { margin: 0 0 1.1rem; }
+
+.skip-link { position: absolute; left: -999px; }
+.skip-link:focus { left: 16px; top: 8px; background: var(--card); padding: 4px 10px; z-index: 10; }
+
+/* ---------- 導覽列（site.js 產生） ---------- */
+.site-header {
+  position: sticky; top: 0; z-index: 5;
+  background: color-mix(in srgb, var(--paper) 92%, transparent);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+}
+.site-header .inner {
+  max-width: 1080px; margin: 0 auto;
+  display: flex; align-items: center; gap: 1rem;
+  padding: .6rem 16px;
+}
+.brand {
+  font-family: var(--serif); font-weight: 700; font-size: 1.1rem;
+  color: var(--ink); text-decoration: none; white-space: nowrap;
+  display: flex; align-items: center; gap: .45rem;
+}
+.brand-mark { width: 28px; height: 28px; color: var(--earth); }
+.site-nav { margin-left: auto; overflow-x: auto; scrollbar-width: none; }
+.site-nav::-webkit-scrollbar { display: none; }
+.site-nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: .25rem; }
+.site-nav a {
+  display: block; padding: .3rem .7rem; border-radius: 999px;
+  color: var(--muted); text-decoration: none; font-size: .95rem; white-space: nowrap;
+}
+.site-nav a:hover { background: var(--paper-2); color: var(--ink); }
+.site-nav a[aria-current="page"] { background: var(--earth-soft); color: var(--ink); font-weight: 600; }
+
+/* ---------- 版面 ---------- */
+main { max-width: var(--maxw); margin: 0 auto; padding: 0 16px 4rem; }
+
+/* ---------- 頁首橫幅 ---------- */
+.page-hero { padding: 3rem 0 1.5rem; }
+.page-hero .emoji { font-size: 2.6rem; line-height: 1; display: block; margin-bottom: .6rem; }
+.page-hero h1 { font-size: clamp(1.9rem, 6vw, 2.6rem); margin: 0 0 .6rem; }
+.lede { font-size: 1.12rem; color: var(--muted); margin: 0; }
+
+/* ---------- 首頁 ---------- */
+.home-hero {
+  max-width: 1080px; margin: 0 auto;
+  padding: 3.5rem 16px 2rem;
+  display: grid; grid-template-columns: 1.2fr 1fr; gap: 2rem; align-items: center;
+}
+.home-hero .kicker {
+  display: inline-block; font-size: .85rem; letter-spacing: .12em;
+  color: var(--forest); background: var(--forest-soft);
+  padding: .15rem .7rem; border-radius: 999px; margin-bottom: 1rem;
+}
+.home-hero h1 { font-size: clamp(2.2rem, 8vw, 3.6rem); margin: 0 0 1rem; }
+.home-hero h1 small { display: block; font-size: .42em; color: var(--muted); font-weight: 400; margin-top: .4rem; letter-spacing: .04em; }
+.home-hero .dog-art { color: var(--earth); }
+.quick-facts {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: .75rem;
+  margin: 1.5rem 0 0; padding: 0; list-style: none;
+}
+.quick-facts li {
+  background: var(--card); border: 1px solid var(--line); border-radius: 10px;
+  padding: .6rem .8rem; line-height: 1.4;
+}
+.quick-facts b { display: block; font-family: var(--serif); font-size: 1.25rem; color: var(--earth); }
+.quick-facts span { font-size: .82rem; color: var(--muted); }
+
+.cards-wrap { max-width: 1080px; margin: 0 auto; padding: 0 16px 4rem; }
+.cards-wrap > h2 { border: 0; margin-top: 1rem; }
+.page-cards {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 1rem; list-style: none; padding: 0; margin: 0;
+}
+.page-card a {
+  display: flex; flex-direction: column; height: 100%;
+  background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 1.3rem 1.3rem 1.1rem; text-decoration: none; color: var(--ink);
+  box-shadow: var(--shadow); transition: transform .15s, border-color .15s;
+}
+.page-card a:hover { transform: translateY(-3px); border-color: var(--earth); color: var(--ink); }
+.page-card .emoji { font-size: 1.9rem; }
+.page-card h3 { margin: .5rem 0 .3rem; }
+.page-card p { color: var(--muted); font-size: .95rem; margin: 0 0 .8rem; line-height: 1.6; }
+.page-card .more { margin-top: auto; color: var(--forest); font-size: .9rem; font-weight: 600; }
+
+/* ---------- 元件 ---------- */
+.fact-box {
+  background: var(--earth-soft);
+  border-left: 5px solid var(--earth);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  padding: 1rem 1.2rem; margin: 1.6rem 0;
+}
+.fact-box .label { font-family: var(--serif); font-weight: 700; display: block; margin-bottom: .3rem; }
+.fact-box p:last-child { margin-bottom: 0; }
+
+.note-box {
+  background: var(--forest-soft);
+  border-radius: var(--radius); padding: 1rem 1.2rem; margin: 1.6rem 0;
+}
+.note-box .label { font-weight: 700; color: var(--forest); display: block; margin-bottom: .2rem; }
+.note-box p:last-child { margin-bottom: 0; }
+
+.table-scroll { overflow-x: auto; margin: 1.2rem 0; }
+.data-table { width: 100%; border-collapse: collapse; font-size: .96rem; background: var(--card); }
+.data-table th, .data-table td { padding: .6rem .8rem; border-bottom: 1px solid var(--line); text-align: left; }
+.data-table th { background: var(--paper-2); font-weight: 600; white-space: nowrap; }
+
+.tag-list { list-style: none; padding: 0; margin: 1rem 0; display: flex; flex-wrap: wrap; gap: .5rem; }
+.tag-list li {
+  background: var(--card); border: 1px solid var(--line);
+  border-radius: 999px; padding: .15rem .8rem; font-size: .92rem;
+}
+
+.timeline { list-style: none; padding: 0; margin: 1.2rem 0; border-left: 2px solid var(--line); }
+.timeline li { position: relative; padding: 0 0 1.2rem 1.4rem; }
+.timeline li::before {
+  content: ""; position: absolute; left: -7px; top: .55rem;
+  width: 12px; height: 12px; border-radius: 50%;
+  background: var(--earth); border: 2px solid var(--paper);
+}
+.timeline .when { font-family: var(--serif); font-weight: 700; color: var(--earth); display: block; }
+
+.sources {
+  margin-top: 3rem; padding-top: 1rem;
+  border-top: 1px dashed var(--line); font-size: .9rem; color: var(--muted);
+}
+.sources h2 { font-size: 1rem; border: 0; margin: 0 0 .4rem; padding: 0; }
+.sources ol { padding-left: 1.3rem; margin: 0; }
+
+/* ---------- 上一頁／下一頁 ---------- */
+.pager { display: grid; grid-template-columns: 1fr 1fr; gap: .8rem; margin-top: 2.5rem; }
+.pager a {
+  display: block; padding: .8rem 1rem; border: 1px solid var(--line); border-radius: var(--radius);
+  text-decoration: none; color: var(--ink); background: var(--card); line-height: 1.5;
+}
+.pager a:hover { border-color: var(--earth); color: var(--ink); }
+.pager small { display: block; color: var(--muted); }
+.pager .next { text-align: right; grid-column: 2; }
+
+/* ---------- 頁尾 ---------- */
+.site-footer {
+  border-top: 1px solid var(--line); text-align: center;
+  color: var(--muted); font-size: .85rem; padding: 1.5rem 16px 2.5rem;
+}
+
+/* ---------- 手機 ---------- */
+@media (max-width: 720px) {
+  body { font-size: 16px; }
+  .home-hero { grid-template-columns: 1fr; padding-top: 2rem; }
+  .home-hero .dog-art { max-width: 260px; margin: 0 auto; order: -1; }
+  .site-header .inner { flex-wrap: wrap; gap: .3rem; }
+  .site-nav { margin-left: 0; width: 100%; }
+}
